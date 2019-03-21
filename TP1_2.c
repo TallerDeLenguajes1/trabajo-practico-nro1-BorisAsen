@@ -17,10 +17,12 @@ void cuadrado_void(int num, int *sqr);
 void direccion_y_contenido(int num);
 void invertir(int *a, int *b);
 void ordenar(int *c, int *d);
+void ordenar_e_imprimir(int *e, int *f);
 
 int main(void) {
+	setvbuf(stdout,NULL,_IONBF,0);
 
-	int num=3, a=7, b=2, sqr=0, c=11, d=5;
+	int num=3, a=7, b=2, sqr=0, c=11, d=5, e, f;
 
 //******************Apartado I)******************
 	printf("I) El cuadrado de %i es %i\n\n",num,cuadrado(num));
@@ -37,10 +39,20 @@ int main(void) {
 	invertir(&a,&b);
 	printf("| Valores invertidos: a=%i, b=%i\n\n", a, b);
 
-//******************Apartado IV)******************
+//******************Apartado V)******************
 	printf("V) Valores originales: c=%i, d=%i ", c, d);
 	ordenar(&c, &d);
 	printf("| Valores ordenados: c=%i, d=%i\n\n", c, d);
+
+//******************Apartado VI)******************
+	printf("VI) Ingrese dos valores a ordenar separados por un espacio: ");
+	scanf("%i %i", &e, &f);
+	printf("\nValores ingresados: e=%i, f=%i ", e, f);
+	ordenar_e_imprimir(&e, &f);
+	printf("| Valores ordenados: e=%i, f=%i\n\n", e, f);
+
+
+
 
 	return EXIT_SUCCESS;
 }
@@ -77,6 +89,18 @@ void ordenar(int *c, int *d){
 		aux=*c;
 		*c=*d;
 		*d=aux;
+	}
+
+	return;
+}
+
+void ordenar_e_imprimir(int *e, int *f){
+	int aux;
+
+	if(*e>*f){
+		aux=*e;
+		*e=*f;
+		*f=aux;
 	}
 
 	return;
